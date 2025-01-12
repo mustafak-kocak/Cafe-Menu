@@ -1,0 +1,38 @@
+<ion-app>
+
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+
+        <ion-row>
+          <ion-col>
+            <ion-avatar id="profilePicture">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1oJCSjJhIl73mw8DeiTow3BOiZAqa91j2IQ&s">
+            </ion-avatar>
+            <p style="text-align: center; color: white; font-weight: 400; font-size: 11pt;">
+              <strong>HOŞ GELDİNİZ</strong>
+            </p>
+          </ion-col>
+        </ion-row>
+
+        <ion-list color="none" lines="none" id="menu-list">
+        <ion-list-header color="none" lines="none" style="padding-bottom: 1em;">Menu</ion-list-header>
+          <ion-menu-toggle lines="none" color="none" auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item lines="none" color="none" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false"
+              routerLinkActive="selected">
+              <ion-icon color="none" aria-hidden="true" slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label color="none">{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <p id="shopInfo">
+          <strong>MusCOFFEE</strong>
+        </p>
+
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+
+</ion-app>

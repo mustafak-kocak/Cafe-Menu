@@ -1,0 +1,28 @@
+.addProductToCart {
+    position: fixed;
+    width: 85%;
+    bottom: 1%;
+    margin-bottom: 4%;
+    left: 50%;
+    margin-left: -42.5%;
+    --background: none;
+    background-image: linear-gradient(0deg, #20961c , #28a32e);
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+#productPicture {
+    width: 250px;
+    height: 250px;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0%;
+    background-color: white;
+    border: 5px solid #1247a3;
+}
+
+ion-toast {
+    font-weight: bold;
+}

@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Your Cart Items</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- Show Cart Empty Message -->
+  <div id="emptyCart" *ngIf="cartItems.length == 0">
+    Cart is empty!<br/><br/>
+
+    <ion-button expand="block" (click)="goHome()">Go Back</ion-button>
+  </div>
+
+  <!-- Show Items if there are any -->
+  <ion-grid no-padding *ngIf="cartItems.length > 0">
+    <div text-center class="menu-item-container">
+      <ion-card *ngFor="let item of cartItems">
+        <ion-button color="danger" class="delete" (click)="deleteItem(item)">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+        <ion-thumbnail>
+          <ion-img [src]="item.image"></ion-img>
+        </ion-thumbnail>
+        <p class="item-name">{{item.name}}</p>
+        <p class="item-price">{{item.price | currency }}</p>
+      </ion-card>
+    </div>
+  </ion-grid>
+
+</ion-content>
+
+<!-- Footer -->
+<ion-footer>
+  <div id="orderTotalLbl">Order Total</div>
+  <div id="orderTotalAmt">{{orderTotal | currency}}</div>
+</ion-footer>

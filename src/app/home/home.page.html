@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>MusCOFFEE Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div id="loadingText" *ngIf="menuItems.length == 0">
+    Lütfen Bekleyiniz...
+  </div>
+
+  <ion-grid no-padding *ngIf="menuItems.length > 0">
+    <ion-row>
+      <ion-col size="12" size-md="4" size-lg="4" *ngFor="let item of menuItems">
+        <div class="menu-item-container">
+          <ion-card class="menu-card">
+            <ion-thumbnail>
+              <ion-img [src]="item.image || 'https://www.rapidseal.net/Admin/Sayfalar/bloglar/yeni-urunler-web-sitemize-eklendi.png'" class="item-img"></ion-img>
+            </ion-thumbnail>
+
+            <ion-card-header>
+              <ion-card-title class="item-name">{{ item.name }}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              <p class="item-price">{{ item.price | currency }}</p>
+            </ion-card-content>
+
+            <ion-button color="primary" size="small" class="add-to-cart-btn" (click)="addToCart(item)">
+              Sepete Ekle
+            </ion-button>
+
+            <ion-button color="danger" size="small" class="delete-btn" (click)="deleteProduct(item.id.toString())">
+              Sil
+            </ion-button>
+          </ion-card>
+
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-button size="small" expand="block" (click)="addNewItem()" class="add-item-btn">
+    Ürün Ekle
+  </ion-button>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button id="cartFabButton" (click)="openCart()">
+      <ion-icon name="cart" style="padding-right: 2%;"></ion-icon> <strong>{{ cartItems.length }}</strong>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
